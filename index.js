@@ -3,6 +3,7 @@ const cors = require('cors')
 const nodemailer = require('nodemailer');
 const itemsRouter = require('./routes/items.routes')
 const kassaRouter = require('./routes/kassa.routes')
+const runMigrations = require('./migrate')
 const PORT = 53314
 
 const app = express()
@@ -54,7 +55,14 @@ app.post('/api/send-email', (req, res) => {
     }
   });
 });
+async function start() {
+  try {
+    await runMigrations()
+    app.listen(PORT, () => console.log(`server started on port ${PORT}`))
+  } catch (error) {
+    console.error('Failed to start server:', error)
+    process.exit(1)
+  }
+}
 
-
-
-app.listen(PORT, () => console.log(`server started on port ${PORT}`))
+start()

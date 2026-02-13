@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS items (
+  id SERIAL PRIMARY KEY,
+  name TEXT,
+  description TEXT,
+  category TEXT,
+  price TEXT,
+  static_img TEXT,
+  storage TEXT,
+  color TEXT,
+  size TEXT,
+  screen TEXT,
+  diagonal TEXT,
+  generation TEXT,
+  connection TEXT,
+  model TEXT,
+  complect TEXT,
+  compatibility TEXT,
+  power TEXT,
+  length TEXT
+);
